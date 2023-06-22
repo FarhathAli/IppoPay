@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Task1</title>
+    <script>
+      function minimumAbsoluteDifference(nums) {
+        const n = nums.length / 2;
+        const sum = nums.reduce((acc, num) => acc + num, 0);
+
+        nums.sort((a, b) => a - b);
+
+        let sum1 = 0;
+        let sum2 = sum;
+
+        let minDiff = Infinity;
+
+        for (let i = 0; i < n; i++) {
+          sum1 += nums[i];
+          sum2 -= nums[i];
+          minDiff = Math.min(minDiff, Math.abs(sum1 - sum2));
+        }
+
+        return minDiff;
+      }
+
+      //alert(`Minimum Possible Absolute Difference is: ${minimumAbsoluteDifference([-36, 36])}`);
+
+      function test(){
+        console.log("test")
+        alert(minimumAbsoluteDifference([-36, 36]));
+      }
+
+    </script>
+  </head>
+  <body>
+    <div>
+      <button onclick="test()">Click Me</button>
+    </div>
+  </body>
+</html>

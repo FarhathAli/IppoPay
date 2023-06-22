@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Task</title>
+    <script>
+      function minimumAbsoluteDifference(nums) {
+        const n = nums.length / 2;
+        let minDiff = Infinity;
+
+        function getAbsoluteDifference(arr1, arr2) {
+          const sum1 = arr1.reduce((acc, num) => acc + num, 0);
+          const sum2 = arr2.reduce((acc, num) => acc + num, 0);
+          return Math.abs(sum1 - sum2);
+        }
+
+        function partition(nums, index, arr1, arr2) {
+          if (index === nums.length) {
+            minDiff = Math.min(minDiff, getAbsoluteDifference(arr1, arr2));
+            return;
+          }
+
+          arr1.push(nums[index]);
+          partition(nums, index + 1, arr1, arr2);
+          arr1.pop();
+
+          arr2.push(nums[index]);
+          partition(nums, index + 1, arr1, arr2);
+          arr2.pop();
+        }
+
+        partition(nums, 0, [], []);
+
+        return minDiff;
+      }
+
+      const nums = [3, 9, 7, 3];
+      //alert(`Minimum Possible Absolute Difference is: ${minimumAbsoluteDifference(nums)}`);
+
+      function test(){
+        console.log("test")
+        alert(minimumAbsoluteDifference(nums));
+      }
+    </script>
+  </head>
+  <body>
+    <div>
+       <button onclick="test()">Click Me</button>
+    </div>
+  </body>
+</html>

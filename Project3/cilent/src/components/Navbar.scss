@@ -1,0 +1,19 @@
+.main{
+   display: flex;
+   border-bottom: 1px solid black;
+   height: 50px;
+   padding: 10px;
+}
+
+.left{
+    flex: 1;
+    cursor: pointer;
+}
+.center{
+    cursor: pointer;
+}
+
+.right{
+    cursor: pointer;
+    margin-left: 15px;
+}
